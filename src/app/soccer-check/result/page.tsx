@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { loadSoccerCheck } from '@/lib/soccerCheckStorage';
 import { soccerIssues } from '@/data/soccerIssues';
-import { SoccerCheckResult, SoccerIssue } from '@/types/soccerCheck';
+import { SoccerIssue } from '@/types/soccerCheck';
 
 function isEmpty(value: string | string[] | Record<string, string>): boolean {
   if (typeof value === 'string') return value.trim() === '';
@@ -16,15 +16,19 @@ const RANK_COLORS = ['#EA580C', '#CA8A04', '#64748B'];
 
 export default function SoccerCheckResultPage() {
   const router = useRouter();
-  const [result, setResult] = useState<SoccerCheckResult | null>(null);
-  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [{ result, initialExpandedId }] = useState(() => {
+    const saved = loadSoccerCheck();
+    return {
+      result: saved,
+      initialExpandedId:
+        saved && saved.topIssues.length > 0 ? saved.topIssues[0].issueId : null,
+    };
+  });
+  const [expandedId, setExpandedId] = useState<string | null>(initialExpandedId);
 
   useEffect(() => {
-    const saved = loadSoccerCheck();
-    if (!saved) { router.replace('/soccer-check'); return; }
-    setResult(saved);
-    if (saved.topIssues.length > 0) setExpandedId(saved.topIssues[0].issueId);
-  }, [router]);
+    if (!result) router.replace('/soccer-check');
+  }, [router, result]);
 
   const getIssueDetail = (issueId: string): SoccerIssue | undefined =>
     soccerIssues.find((i) => i.id === issueId);
