@@ -9,11 +9,11 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
-  title: '今伸ばしたいプレーテーマ',
-  description: '気になる場面を選ぶと、なぜ起こるのか・どんな声がけができるかがわかります',
+  title: 'プレーテーマ辞典',
+  description: 'カテゴリから気になる項目を選ぶと、なぜ起こるのか・どんな声がけができるかがわかります',
   openGraph: {
-    title: '今伸ばしたいプレーテーマ',
-    description: '子どものサッカーで伸ばしたいテーマを整理するチェック',
+    title: 'プレーテーマ辞典',
+    description: '子どものサッカーで気になるプレーをカテゴリから調べられる辞典',
     type: 'website',
   },
 };

@@ -1,16 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-
-const CATEGORIES = [
-  { name: '認知・視野', emoji: '👁' },
-  { name: 'ポジショニング', emoji: '📍' },
-  { name: 'パス・コントロール', emoji: '⚽' },
-  { name: 'ドリブル・1対1', emoji: '🏃' },
-  { name: '守備', emoji: '🛡' },
-  { name: 'メンタル・思考', emoji: '🧠' },
-  { name: 'フィジカル', emoji: '💪' },
-];
+import { ISSUE_CATEGORIES, CATEGORY_META } from '@/data/soccerIssues';
 
 export default function SoccerCheckIntroPage() {
   const router = useRouter();
@@ -28,7 +19,7 @@ export default function SoccerCheckIntroPage() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
           </svg>
         </button>
-        <h1 className="font-bold text-gray-900 text-base flex-1">今伸ばしたいプレーテーマ</h1>
+        <h1 className="font-bold text-gray-900 text-base flex-1">プレーテーマ辞典</h1>
       </div>
 
       <div className="flex-1 px-5 py-7">
@@ -41,42 +32,47 @@ export default function SoccerCheckIntroPage() {
             <span className="text-4xl">⚽</span>
           </div>
           <h2 className="text-xl font-black text-gray-900 mb-3">
-            今伸ばしたいプレーテーマを<br />確認しましょう
+            気になるプレーを<br />カテゴリから調べましょう
           </h2>
           <p className="text-sm text-gray-500 leading-relaxed max-w-xs mx-auto">
-            気になる場面を選ぶと、「なぜ起こるのか」「どんな声がけができるか」「明日から何を意識すればよいか」がわかります。
+            カテゴリを選び、お子さんが悩んでいる項目をタップすると、「なぜ起こるのか」「どんな声がけができるか」「明日から何を意識すればよいか」がわかります。
           </p>
         </div>
 
         {/* Notice */}
         <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-6 text-xs text-amber-700 leading-relaxed">
-          このチェックは、子どもの欠点を探すものではありません。今伸ばしたいプレーテーマを整理し、家庭での声がけや関わり方を考えるためのものです。
+          この辞典は、子どもの欠点を探すものではありません。今伸ばしたいプレーテーマを整理し、家庭での声がけや関わり方を考えるためのものです。
         </div>
 
         {/* Categories */}
         <div className="mb-8">
           <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">
-            チェックするカテゴリ
+            カテゴリを選ぶ
           </p>
           <div className="grid grid-cols-2 gap-2">
-            {CATEGORIES.map((cat) => (
-              <div
-                key={cat.name}
-                className="flex items-center gap-2.5 bg-gray-50 rounded-2xl px-4 py-3"
+            {ISSUE_CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => router.push(`/soccer-check/browse?category=${encodeURIComponent(cat)}`)}
+                className="flex items-center gap-2 bg-green-50 border border-green-200 rounded-2xl pl-3.5 pr-2.5 py-3 text-left transition-all active:scale-[0.97] hover:bg-green-100 hover:border-green-300 shadow-sm"
+                style={{ minHeight: '52px' }}
               >
-                <span className="text-base">{cat.emoji}</span>
-                <span className="text-xs font-medium text-gray-700">{cat.name}</span>
-              </div>
+                <span className="text-base flex-shrink-0">{CATEGORY_META[cat].emoji}</span>
+                <span className="text-xs font-bold text-green-800 flex-1 leading-tight">{CATEGORY_META[cat].short}</span>
+                <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="#16A34A" strokeWidth={3} className="flex-shrink-0">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
             ))}
           </div>
         </div>
 
         <button
-          onClick={() => router.push('/soccer-check/quiz')}
+          onClick={() => router.push('/soccer-check/browse')}
           className="w-full text-white font-bold py-4 px-6 rounded-2xl text-base shadow-lg transition-all active:scale-[0.98]"
           style={{ background: 'linear-gradient(135deg, #16A34A, #15803D)' }}
         >
-          チェックをはじめる →
+          すべてのカテゴリを見る →
         </button>
       </div>
     </div>

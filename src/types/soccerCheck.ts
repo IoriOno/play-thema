@@ -22,20 +22,3 @@ export interface SoccerIssue {
   voicePrompts: string[];
   awareness: string;
 }
-
-export type IssueScore = 0 | 1 | 2;
-
-export interface SoccerIssueAnswers {
-  [issueId: string]: IssueScore;
-}
-
-export interface SoccerCheckResult {
-  topIssues: Array<{
-    issueId: string;
-    category: IssueCategory;
-    displayTitle: string;
-    score: IssueScore;
-  }>;
-  allAnswers: SoccerIssueAnswers;
-  createdAt: string;
-}

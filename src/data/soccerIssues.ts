@@ -1,4 +1,4 @@
-import { SoccerIssue } from '@/types/soccerCheck';
+import { SoccerIssue, IssueCategory } from '@/types/soccerCheck';
 
 export const soccerIssues: SoccerIssue[] = [
   // ① 認知・視野
@@ -703,3 +703,13 @@ export const ISSUE_CATEGORIES = [
   'メンタル・思考',
   'フィジカル・身体操作',
 ] as const;
+
+export const CATEGORY_META: Record<IssueCategory, { emoji: string; short: string }> = {
+  '認知・視野': { emoji: '👁', short: '認知・視野' },
+  'ポジショニング・サポート': { emoji: '📍', short: 'ポジショニング' },
+  '技術：パス・コントロール': { emoji: '⚽', short: 'パス・コントロール' },
+  'ドリブル・1対1': { emoji: '🏃', short: 'ドリブル・1対1' },
+  '守備': { emoji: '🛡', short: '守備' },
+  'メンタル・思考': { emoji: '🧠', short: 'メンタル・思考' },
+  'フィジカル・身体操作': { emoji: '💪', short: 'フィジカル' },
+};
