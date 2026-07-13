@@ -252,7 +252,7 @@ export default async function AnalyticsAdminPage({
           </p>
         </div>
         <a
-          href="https://analytics.google.com/"
+          href="https://analytics.google.com/analytics/web/#/p545224746/reports/intelligenthome"
           target="_blank"
           rel="noopener noreferrer"
           className="flex-shrink-0 bg-gray-900 text-white text-xs font-bold py-2.5 px-4 rounded-2xl whitespace-nowrap active:scale-[0.98] transition-all"
