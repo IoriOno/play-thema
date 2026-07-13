@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { ISSUE_CATEGORIES, CATEGORY_META } from '@/data/soccerIssues';
+import { trackCategorySelect, trackCtaClick } from '@/lib/analytics';
 
 export default function SoccerCheckIntroPage() {
   const router = useRouter();
@@ -53,7 +54,10 @@ export default function SoccerCheckIntroPage() {
             {ISSUE_CATEGORIES.map((cat) => (
               <button
                 key={cat}
-                onClick={() => router.push(`/soccer-check/browse?category=${encodeURIComponent(cat)}`)}
+                onClick={() => {
+                  trackCategorySelect(cat);
+                  router.push(`/soccer-check/browse?category=${encodeURIComponent(cat)}`);
+                }}
                 className="flex items-center gap-2 bg-green-50 border border-green-200 rounded-2xl pl-3.5 pr-2.5 py-3 text-left transition-all active:scale-[0.97] hover:bg-green-100 hover:border-green-300 shadow-sm"
                 style={{ minHeight: '52px' }}
               >
@@ -68,7 +72,10 @@ export default function SoccerCheckIntroPage() {
         </div>
 
         <button
-          onClick={() => router.push('/soccer-check/browse')}
+          onClick={() => {
+            trackCtaClick('browse_all');
+            router.push('/soccer-check/browse');
+          }}
           className="w-full text-white font-bold py-4 px-6 rounded-2xl text-base shadow-lg transition-all active:scale-[0.98]"
           style={{ background: 'linear-gradient(135deg, #16A34A, #15803D)' }}
         >

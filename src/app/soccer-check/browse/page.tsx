@@ -4,6 +4,7 @@ import { Suspense, useMemo, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { soccerIssues, ISSUE_CATEGORIES, CATEGORY_META } from '@/data/soccerIssues';
 import { SoccerIssue } from '@/types/soccerCheck';
+import { trackCategorySelect, trackIssueExpand } from '@/lib/analytics';
 
 function isEmpty(value: string | string[]): boolean {
   if (typeof value === 'string') return value.trim() === '';
@@ -44,6 +45,7 @@ function BrowseContent() {
   );
 
   const selectCategory = (cat: string) => {
+    trackCategorySelect(cat);
     setActiveCategory(cat);
     setExpandedId(null);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -112,7 +114,12 @@ function BrowseContent() {
               issue={issue}
               isExpanded={expandedId === issue.id}
               onToggle={() =>
-                setExpandedId((prev) => (prev === issue.id ? null : issue.id))
+                setExpandedId((prev) => {
+                  const next = prev === issue.id ? null : issue.id;
+                  // 展開したときのみ計測（閉じる操作は数えない）
+                  if (next) trackIssueExpand(issue.id, issue.category);
+                  return next;
+                })
               }
             />
           ))}

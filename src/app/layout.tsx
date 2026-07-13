@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Noto_Sans_JP } from 'next/font/google';
+import { GoogleAnalytics } from '@next/third-parties/google';
+import WebVitals from '@/components/WebVitals';
 import './globals.css';
 
 const notoSansJP = Noto_Sans_JP({
@@ -29,13 +31,16 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
   return (
     <html lang="ja">
       <body className={`${notoSansJP.className} bg-[#F8FAFC] min-h-screen`}>
         <div className="mx-auto max-w-lg min-h-screen flex flex-col bg-white shadow-sm">
           {children}
         </div>
+        <WebVitals />
       </body>
+      {gaId && <GoogleAnalytics gaId={gaId} />}
     </html>
   );
 }
