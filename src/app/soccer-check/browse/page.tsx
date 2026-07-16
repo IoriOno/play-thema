@@ -1,6 +1,7 @@
 'use client';
 
 import { Suspense, useMemo, useState } from 'react';
+import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { soccerIssues, ISSUE_CATEGORIES, CATEGORY_META } from '@/data/soccerIssues';
 import { SoccerIssue } from '@/types/soccerCheck';
@@ -16,6 +17,21 @@ const CAUSE_LABELS: Record<string, string> = {
   technique: '技術',
   bodyControl: '身体操作',
   interpersonal: '対人',
+};
+
+const ISSUE_IMAGES: Record<string, { src: string; alt: string }> = {
+  cognition_01: {
+    src: '/images/issues/cognition-01-ball-watching.png',
+    alt: 'ボールだけを見て、背後の相手やフリーの味方に気づいていない選手',
+  },
+  cognition_02: {
+    src: '/images/issues/cognition-02-stop-then-think.png',
+    alt: 'ボールを足元に止めて考えている間に、相手選手が近づいている場面',
+  },
+  cognition_03: {
+    src: '/images/issues/cognition-03-ball-and-opponent.png',
+    alt: 'ボールを持つ相手に集中し、背後へ走る別の相手に気づいていない守備選手',
+  },
 };
 
 export default function SoccerCheckBrowsePage() {
@@ -144,6 +160,7 @@ function IssueCard({
   const showVoicePrompts = !isEmpty(issue.voicePrompts);
   const showAwareness = !isEmpty(issue.awareness);
   const hasAnyDetail = showCommonScene || showCauses || showVoicePrompts || showAwareness;
+  const issueImage = ISSUE_IMAGES[issue.id];
 
   return (
     <div
@@ -174,6 +191,19 @@ function IssueCard({
 
       {isExpanded && hasAnyDetail && (
         <div className="border-t border-gray-100 px-5 py-5 space-y-5 bg-gray-50/50">
+          {issueImage && (
+            <figure className="overflow-hidden rounded-2xl border border-green-100 bg-white shadow-sm">
+              <Image
+                src={issueImage.src}
+                alt={issueImage.alt}
+                width={1200}
+                height={675}
+                className="h-auto w-full"
+                priority
+              />
+            </figure>
+          )}
+
           {showCommonScene && (
             <div>
               <h4 className="text-[11px] font-black text-gray-400 uppercase tracking-widest mb-2">
