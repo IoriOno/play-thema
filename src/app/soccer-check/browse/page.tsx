@@ -32,6 +32,138 @@ const ISSUE_IMAGES: Record<string, { src: string; alt: string }> = {
     src: '/images/issues/cognition-03-ball-and-opponent.png',
     alt: 'ボールを持つ相手に集中し、背後へ走る別の相手に気づいていない守備選手',
   },
+  cognition_04: {
+    src: '/images/issues/cognition-04-surroundings.png',
+    alt: '近くの選手だけを見て、遠くの味方や空いた場所に気づいていない選手',
+  },
+  cognition_05: {
+    src: '/images/issues/cognition-05-slow-decision.png',
+    alt: 'ドリブルしながら判断に迷い、相手に囲まれかけている選手',
+  },
+  cognition_06: {
+    src: '/images/issues/cognition-06-prediction.png',
+    alt: 'こぼれ球を予測して動く相手より反応が一歩遅れている選手',
+  },
+  cognition_07: {
+    src: '/images/issues/cognition-07-pass-lanes.png',
+    alt: '味方へのパスコースを見つけられず相手の前で迷っている選手',
+  },
+  cognition_08: {
+    src: '/images/issues/cognition-08-open-space.png',
+    alt: '選手が集まる狭い場所だけを見て、反対側の広いスペースに気づいていない場面',
+  },
+  support_01: {
+    src: '/images/issues/support-01-crowding.png',
+    alt: '味方がボールの近くに集まり、周囲の広いスペースを使えていない場面',
+  },
+  support_02: {
+    src: '/images/issues/support-02-stop-after-pass.png',
+    alt: 'パスを出した後にその場で止まり、次のサポートへ動けていない選手',
+  },
+  support_03: {
+    src: '/images/issues/support-03-hidden-pass-lane.png',
+    alt: '相手の背後に重なり、ボールを持つ味方から見えない位置にいる選手',
+  },
+  support_04: {
+    src: '/images/issues/support-04-late-support.png',
+    alt: '相手に囲まれかけた味方へのサポートに遅れて走り出す選手たち',
+  },
+  support_05: {
+    src: '/images/issues/support-05-positioning.png',
+    alt: '味方を助けられる立ち位置を見つけられず中途半端な場所で迷う選手',
+  },
+  support_06: {
+    src: '/images/issues/support-06-no-width.png',
+    alt: '選手が中央に集まり、両サイドの広いスペースを使えていない場面',
+  },
+  support_07: {
+    src: '/images/issues/support-07-no-depth.png',
+    alt: '味方が同じ高さに並び、相手の背後へ走る選手がいない場面',
+  },
+  support_08: {
+    src: '/images/issues/support-08-too-close-ball.png',
+    alt: '味方がボールへ近づき過ぎて互いのプレーする場所を狭くしている場面',
+  },
+  pass_01: {
+    src: '/images/issues/pass-01-inaccurate-pass.png',
+    alt: '走る味方からずれた弱いパスに相手が先に近づいている場面',
+  },
+  pass_02: {
+    src: '/images/issues/pass-02-heavy-touch.png',
+    alt: 'ファーストタッチが大きくなり、離れたボールを相手に狙われている選手',
+  },
+  pass_03: {
+    src: '/images/issues/pass-03-cannot-face-forward.png',
+    alt: '攻める方向に背を向けたままボールを受け、相手に寄せられている選手',
+  },
+  pass_04: {
+    src: '/images/issues/pass-04-dominant-foot.png',
+    alt: '利き足だけでボールを扱おうとして窮屈な姿勢になっている選手',
+  },
+  dribble_01: {
+    src: '/images/issues/dribble-01-straight-into-opponent.png',
+    alt: '空いている方向を見ず、正面の相手へ一直線にドリブルする選手',
+  },
+  dribble_02: {
+    src: '/images/issues/dribble-02-no-speed-change.png',
+    alt: '一定の速さでドリブルし、相手に余裕を持ってついてこられている選手',
+  },
+  dribble_03: {
+    src: '/images/issues/dribble-03-timing.png',
+    alt: '相手が整った不利なタイミングでドリブルを仕掛けようとしている選手',
+  },
+  dribble_04: {
+    src: '/images/issues/dribble-04-shielding.png',
+    alt: 'ボールを相手側へ置き、身体で守れず奪われかけている選手',
+  },
+  defense_01: {
+    src: '/images/issues/defense-01-diving-in.png',
+    alt: 'ボールへ大きく飛び込み、相手に横へかわされかけている守備選手',
+  },
+  defense_02: {
+    src: '/images/issues/defense-02-reaching-foot.png',
+    alt: '身体を寄せずに足だけを伸ばし、相手に抜かれかけている守備選手',
+  },
+  defense_03: {
+    src: '/images/issues/defense-03-lost-mark.png',
+    alt: 'ボールを見続け、背後からゴール前へ走る相手のマークを外している守備選手',
+  },
+  defense_04: {
+    src: '/images/issues/defense-04-transition.png',
+    alt: 'ボールを失った直後に足が止まり、走り出した相手への対応が遅れている選手',
+  },
+  mental_01: {
+    src: '/images/issues/mental-01-panic-clearance.png',
+    alt: '周囲に時間と味方がいるのに、慌てて前方へボールを蹴り出す選手',
+  },
+  mental_02: {
+    src: '/images/issues/mental-02-waiting-instructions.png',
+    alt: '自分でプレーを選べず、タッチラインのコーチの指示を待っている選手',
+  },
+  mental_03: {
+    src: '/images/issues/mental-03-after-mistake.png',
+    alt: 'ミスの後に下を向いて止まり、次の守備への反応が遅れている選手',
+  },
+  mental_04: {
+    src: '/images/issues/mental-04-hesitant-challenge.png',
+    alt: 'フリーでパスを受けられるのに、不安からボールを要求できずにいる選手',
+  },
+  physical_01: {
+    src: '/images/issues/physical-01-late-start.png',
+    alt: '高い姿勢で止まり、こぼれ球への最初の一歩が相手より遅れている選手',
+  },
+  physical_02: {
+    src: '/images/issues/physical-02-balance.png',
+    alt: '相手との軽い接触で身体が傾き、バランスを崩しかけている選手',
+  },
+  physical_03: {
+    src: '/images/issues/physical-03-direction-change.png',
+    alt: '相手の切り返しに重心を残し、方向転換が遅れている守備選手',
+  },
+  physical_04: {
+    src: '/images/issues/physical-04-body-orientation.png',
+    alt: '足と腰の向きを整えられず、窮屈な身体の向きでボールを受けている選手',
+  },
 };
 
 export default function SoccerCheckBrowsePage() {
